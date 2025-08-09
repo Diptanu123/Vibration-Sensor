@@ -1,0 +1,43 @@
+// Vibration Sensor with Arduino UNO
+// Detects vibration and blinks LED when vibration is detected
+
+#define ON  1
+#define OFF 0
+
+// Pin configuration
+const int vibrationSensorPin = A5;  // Analog pin connected to vibration sensor
+const int ledPin = 13;              // Built-in LED pin
+
+// Variables to store sensor states
+int presentCondition = 0;
+int previousCondition = 0;
+
+void setup() {
+  pinMode(vibrationSensorPin, INPUT); // Set vibration sensor pin as input
+  pinMode(ledPin, OUTPUT);            // Set LED pin as output
+}
+
+// Function to blink LED twice
+void blinkLED() {
+  for (int i = 0; i < 2; i++) {
+    digitalWrite(ledPin, ON);
+    delay(250);
+    digitalWrite(ledPin, OFF);
+    delay(250);
+  }
+}
+
+void loop() {
+  // Store previous state
+  previousCondition = presentCondition;
+
+  // Read current state from vibration sensor
+  presentCondition = digitalRead(vibrationSensorPin);
+
+  // If state changes (vibration detected)
+  if (previousCondition != presentCondition) {
+    blinkLED();
+  } else {
+    digitalWrite(ledPin, OFF); // Keep LED off if no vibration
+  }
+}
