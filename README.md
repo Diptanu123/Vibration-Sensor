@@ -61,8 +61,3 @@ It is **easy to build, cost-effective, and highly practical** for various applic
 
 ---
 
-## 👨‍💻 Contributors
-- **Diptanu Sarkar**  
-- *(Add your teammates here if applicable)*
-
----
